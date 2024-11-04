@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+</head>
+
+<body class="bg-indigo-400 flex items-center justify-center bg-no-repeat bg-center h-screen">
+    <div class="bg-indigo-100 p-8 rounded-lg shadow-lg max-w-sm w-full">
+        <h1 class="text-2xl font-bold text-gray-800 text-center mb-6">Saiba's Age Calculator</h1>
+
+        <form class="space-y-4">
+            <div>
+                <label for="birthdate" class="block text-gray-700 font-medium">Enter Your Birthdate:</label>
+                <input type="date" value="" id="birthdate"
+                    class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+            </div>
+            <div>
+                <label for="birthdate" class="block text-gray-700 font-medium">currunt date:</label>
+                <input type="date" id="curruntdate"
+                    class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+            </div>
+
+
+            <div class="text-center">
+                <button type="button" onclick="dateOfBirth()"
+                    class="w-full bg-blue-500 text-white py-2 rounded-md font-semibold hover:bg-blue-600 transition-colors">Calculate
+                </button>
+            </div>
+            <div class="text-center mt-4">
+                <p id="result" class="text-lg font-medium text-blue-600"> </p>
+            </div>
+        </form>
+    </div>
+    <script>
+        function dateOfBirth() {
+            const birthdate = document.getElementById("birthdate").value;
+
+
+            const curruntdate = document.getElementById("curruntdate").value;
+
+
+            if (!birthdate || !curruntdate) {
+                alert("arre bhai date gula dao")
+            }
+
+            const bdObject = new Date(birthdate)
+
+            const cdObject = new Date(curruntdate)
+
+
+            let age = cdObject.getFullYear() - bdObject.getFullYear();
+            const monthDifference = cdObject.getMonth() - bdObject.getMonth()
+
+
+
+            if (monthDifference < 0 || (monthDifference === 0 && cdObject.getDay() < bdObject.getDay())) {
+                age--;
+
+            } else {
+                age++;
+            }
+
+
+
+            document.getElementById("result").textContent = `your age is ${age} years`;
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>
